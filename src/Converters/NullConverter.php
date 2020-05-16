@@ -3,8 +3,6 @@
 namespace Luigel\TextToSpeech\Converters;
 
 use Luigel\TextToSpeech\Contracts\Converter;
-use Luigel\TextToSpeech\Traits\Sourceable;
-use Luigel\TextToSpeech\Traits\Storable;
 
 class NullConverter implements Converter
 {
