@@ -5,8 +5,10 @@ namespace Luigel\TextToSpeech\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method mixed convert(string $text, array $options) Converts text to speech
- * @see \Illuminate\Cache\Repository
+ * @method static void convert($data, array $options)
+ * @method static \Luigel\TextToSpeech\Contracts\Converter saveTo(string $path)
+ * @method static \Luigel\TextToSpeech\Contracts\Converter disk(string $disk)
+ * @method static \Luigel\TextToSpeech\Contracts\Converter source(string $source)
  */
 class TextToSpeech extends Facade
 {
