@@ -61,7 +61,7 @@ class PollyConverter implements Converter
         
         if (!isset($options['OutputFormat']))
         {
-            $options['OutputFormat'] = 'mp3';
+            $options['OutputFormat'] = config('tts.output_format');
         }
         
         $parameters = array_merge($options, ['Text' => $this->getTextFromSource($data)]);
