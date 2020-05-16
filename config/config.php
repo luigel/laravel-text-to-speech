@@ -1,8 +1,25 @@
 <?php
 
 return [
-    
+
+    /*
+     * The disk on which to store converted mp3 files by default. Choose
+     * one of the disks you've configured in config/filesystems.php.
+     */
+    'disk' => env('TTS_DISK', 'local'),
+
+    /**
+     * The default audio format from the converted text to speech
+     * You can choose mp3 as of the moment
+     */
+    'output_format' => env('TTS_OUTPUT_FORMAT', 'mp3'),
+
+    /**
+     * The driver to be used for converting Text to Speech
+     * You can choose polly as of the moment
+     */
     'driver' => env('TTS_DRIVER', 'polly'),
+
     'services' => [
         'polly' => [
             /**
