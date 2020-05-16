@@ -1,5 +1,5 @@
 # Text to Speech Package for Laravel
-
+[![StyleCI](https://github.styleci.io/repos/264186668/shield?branch=master)](https://github.styleci.io/repos/264186668)
 <!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/luigel/laravel-amazon-polly.svg?style=flat-square)](https://packagist.org/packages/luigel/laravel-amazon-polly)
 [![Build Status](https://img.shields.io/travis/luigel/laravel-amazon-polly/master.svg?style=flat-square)](https://travis-ci.org/luigel/laravel-amazon-polly)
 [![Quality Score](https://img.shields.io/scrutinizer/g/luigel/laravel-amazon-polly.svg?style=flat-square)](https://scrutinizer-ci.com/g/luigel/laravel-amazon-polly)
