@@ -4,6 +4,7 @@ namespace Luigel\TextToSpeech;
 
 use Illuminate\Support\Manager;
 use InvalidArgumentException;
+use Luigel\TextToSpeech\Converters\NullConverter;
 use Luigel\TextToSpeech\Converters\PollyConverter;
 
 class TextToSpeechManager extends Manager
@@ -31,6 +32,16 @@ class TextToSpeechManager extends Manager
        return new PollyConverter(
            $this->config['tts.services.polly']
        );
+    }
+
+    /**
+     * Create a Null Converter instance
+     *
+     * @return \Luigel\TextToSpeech\Converters\NullConverter
+     */
+    public function createNullDriver()
+    {
+        return new NullConverter();
     }
 
     /**
