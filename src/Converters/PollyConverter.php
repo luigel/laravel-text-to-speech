@@ -3,9 +3,11 @@
 namespace Luigel\TextToSpeech\Converters;
 
 use Luigel\TextToSpeech\Contracts\Converter;
+use Luigel\TextToSpeech\Traits\Storable;
 
 class PollyConverter implements Converter
 {
+    use Storable;
 
     /**
      * Client instance of Polly
@@ -62,6 +64,19 @@ class PollyConverter implements Converter
         }
         
         $parameters = array_merge($options, ['Text' => $text]);
-        return $this->client->synthesizeSpeech($parameters);
+        $result = $this->client->synthesizeSpeech($parameters);
+
+        $this->store($this->getResultContent($result));
+    }
+
+    /**
+     * Get the content of the result from AWS Polly
+     *
+     * @param mixed $result
+     * @return mixed
+     */
+    protected function getResultContent($result)
+    {
+        return $result->get('AudioStream')->getContents();
     }
 }
