@@ -12,4 +12,20 @@ interface Converter
      * @return mixed
      */
     public function convert($text, array $options = null);
+
+    /**
+     * Set where to store the converted file
+     *
+     * @param string $disk
+     * @return $this
+     */
+    public function toDisk(string $disk = 'storage');
+
+    /**
+     * Set path to where to store the converted file
+     *
+     * @param string $path
+     * @return $this
+     */
+    public function path(string $path);
 }
