@@ -6,9 +6,19 @@ use Illuminate\Support\Facades\Storage;
 
 trait Storable
 {
+    /**
+     * Determines where to save the converted file
+     *
+     * @var string
+     */
     protected $disk = 'storage';
 
-    protected $path = null;
+    /**
+     * Determines the path where to save the converted file
+     *
+     * @var string
+     */
+    protected $path;
 
     /**
      * Set where to store the converted file
@@ -29,7 +39,7 @@ trait Storable
      * @param string $path
      * @return $this
      */
-    public function path(string $path)
+    public function saveTo(string $path)
     {
         $this->path = $path;
 
