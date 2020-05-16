@@ -11,7 +11,7 @@ trait Storable
      *
      * @var string
      */
-    protected $disk = 'storage';
+    protected $disk = 'local';
 
     /**
      * Determines the path where to save the converted file
@@ -55,25 +55,9 @@ trait Storable
     {
         $this->ensurePathIsNotNull();
 
-        switch ($this->disk)
-        {
-            case 'storage': 
-                $this->storeToStorage($resultContent);
-                break;
-            default: 
-                break;
-        }
-    }
-
-    /**
-     * Stores the result file to storage
-     *
-     * @param mixed $convertedData
-     * @return void
-     */
-    protected function storeToStorage($convertedData)
-    {
-        Storage::put($this->path, $convertedData);
+        $storage = Storage::disk($this->disk);
+        
+        $storage->put($this->path, $resultContent);
     }
 
     /**
