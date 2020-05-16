@@ -3,11 +3,12 @@
 namespace Luigel\TextToSpeech\Converters;
 
 use Luigel\TextToSpeech\Contracts\Converter;
+use Luigel\TextToSpeech\Traits\Sourceable;
 use Luigel\TextToSpeech\Traits\Storable;
 
 class PollyConverter implements Converter
 {
-    use Storable;
+    use Storable, Sourceable;
 
     /**
      * Client instance of Polly
@@ -47,11 +48,11 @@ class PollyConverter implements Converter
     /**
      * Converts the text to speech
      *
-     * @param string $text
+     * @param mixed $data
      * @param array $options
      * @return null|\GuzzleHttp\Psr7\Stream|\Aws\Result
      */
-    public function convert($text, array $options = null)
+    public function convert($data, array $options = null)
     {
         if (!isset($options['VoiceId']))
         {
@@ -63,7 +64,7 @@ class PollyConverter implements Converter
             $options['OutputFormat'] = 'mp3';
         }
         
-        $parameters = array_merge($options, ['Text' => $text]);
+        $parameters = array_merge($options, ['Text' => $this->getTextFromSource($data)]);
         $result = $this->client->synthesizeSpeech($parameters);
 
         $this->store($this->getResultContent($result));
