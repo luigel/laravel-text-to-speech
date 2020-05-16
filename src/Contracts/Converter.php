@@ -22,10 +22,18 @@ interface Converter
     public function toDisk(string $disk = 'storage');
 
     /**
-     * Set path to where to store the converted file
+     * Set path to where to save the converted file
      *
      * @param string $path
      * @return $this
      */
-    public function path(string $path);
+    public function saveTo(string $path);
+
+    /**
+     * Sets the source where the text from
+     *
+     * @param string $source
+     * @return $this
+     */
+    public function source(string $source = 'text');
 }
