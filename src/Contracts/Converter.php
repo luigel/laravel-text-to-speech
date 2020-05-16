@@ -19,7 +19,7 @@ interface Converter
      * @param string $disk
      * @return $this
      */
-    public function toDisk(string $disk = 'storage');
+    public function disk(string $disk);
 
     /**
      * Set path to where to save the converted file
@@ -35,5 +35,5 @@ interface Converter
      * @param string $source
      * @return $this
      */
-    public function source(string $source = 'text');
+    public function source(string $source);
 }
