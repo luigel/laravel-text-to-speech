@@ -1,6 +1,6 @@
 # Text to Speech Package for Laravel
 [![StyleCI](https://github.styleci.io/repos/264186668/shield?branch=master)](https://github.styleci.io/repos/264186668)
-![Latest Version on Packagist](https://img.shields.io/packagist/v/luigel/laravel-text-to-speech.svg?style=flat-square)](https://packagist.org/packages/luigel/laravel-text-to-speech)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/luigel/laravel-text-to-speech.svg?style=flat-square)](https://packagist.org/packages/luigel/laravel-text-to-speech)
 [![Quality Score](https://img.shields.io/scrutinizer/g/luigel/laravel-text-to-speech.svg?style=flat-square)](https://scrutinizer-ci.com/g/luigel/laravel-text-to-speech)
 [![Total Downloads](https://img.shields.io/packagist/dt/luigel/laravel-text-to-speech.svg?style=flat-square)](https://packagist.org/packages/luigel/laravel-text-to-speech)
 [![License](https://img.shields.io/github/license/luigel/laravel-text-to-speech.svg?style=flat-square)](https://github.com/luigel/laravel-text-to-speech/blob/master/LICENSE.md)
