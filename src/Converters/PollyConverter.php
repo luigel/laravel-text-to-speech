@@ -50,7 +50,7 @@ class PollyConverter implements Converter
      *
      * @param mixed $data
      * @param array $options
-     * @return null|\GuzzleHttp\Psr7\Stream|\Aws\Result
+     * @return void
      */
     public function convert($data, array $options = null)
     {
