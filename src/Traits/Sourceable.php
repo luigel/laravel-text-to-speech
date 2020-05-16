@@ -9,7 +9,7 @@ trait Sourceable
      *
      * @var string
      */
-    protected $source;
+    protected $source = 'text';
 
     /**
      * Sets the source
@@ -17,7 +17,7 @@ trait Sourceable
      * @param string $source
      * @return $this
      */
-    public function source(string $source = 'text')
+    public function source(string $source)
     {
         $this->source = $source;
 
