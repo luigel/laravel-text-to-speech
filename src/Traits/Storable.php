@@ -11,7 +11,7 @@ trait Storable
      *
      * @var string
      */
-    protected $disk = 'local';
+    protected $disk;
 
     /**
      * Determines the path where to save the converted file
@@ -55,7 +55,7 @@ trait Storable
     {
         $this->ensurePathIsNotNull();
 
-        $storage = Storage::disk($this->disk);
+        $storage = Storage::disk($this->disk ?: config('tts.disk'));
         
         $storage->put($this->path, $resultContent);
     }
@@ -67,6 +67,6 @@ trait Storable
      */
     protected function ensurePathIsNotNull()
     {
-        $this->path = $this->path ?: '/TTS/' . now()->timestamp . '.mp3';
+        $this->path = $this->path ?: '/TTS/' . now()->timestamp . config('tts.output_format');
     }
 }
