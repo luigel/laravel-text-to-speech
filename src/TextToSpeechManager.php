@@ -3,7 +3,6 @@
 namespace Luigel\TextToSpeech;
 
 use Illuminate\Support\Manager;
-use InvalidArgumentException;
 use Luigel\TextToSpeech\Converters\NullConverter;
 use Luigel\TextToSpeech\Converters\PollyConverter;
 
@@ -29,13 +28,13 @@ class TextToSpeechManager extends Manager
     {
         $this->ensureAwsSdkIsInstalled();
 
-       return new PollyConverter(
+        return new PollyConverter(
            $this->config['tts.services.polly']
        );
     }
 
     /**
-     * Create a Null Converter instance
+     * Create a Null Converter instance.
      *
      * @return \Luigel\TextToSpeech\Converters\NullConverter
      */

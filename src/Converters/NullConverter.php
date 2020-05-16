@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Luigel\TextToSpeech\Converters;
 
@@ -7,7 +7,7 @@ use Luigel\TextToSpeech\Contracts\Converter;
 class NullConverter implements Converter
 {
     /**
-     * Converts the text to speech
+     * Converts the text to speech.
      *
      * @param mixed $data
      * @param array $options
@@ -19,7 +19,7 @@ class NullConverter implements Converter
     }
 
     /**
-     * Set where to store the converted file
+     * Set where to store the converted file.
      *
      * @param string $disk
      * @return $this
@@ -30,7 +30,7 @@ class NullConverter implements Converter
     }
 
     /**
-     * Set path to where to store the converted file
+     * Set path to where to store the converted file.
      *
      * @param string $path
      * @return $this
@@ -41,7 +41,7 @@ class NullConverter implements Converter
     }
 
     /**
-     * Sets the source
+     * Sets the source.
      *
      * @param string $source
      * @return $this

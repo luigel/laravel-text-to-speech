@@ -5,7 +5,7 @@ namespace Luigel\TextToSpeech\Contracts;
 interface Converter
 {
     /**
-     * Converts text to speech
+     * Converts text to speech.
      *
      * @param string $text
      * @param array $options
@@ -14,7 +14,7 @@ interface Converter
     public function convert($text, array $options = null);
 
     /**
-     * Set where to store the converted file
+     * Set where to store the converted file.
      *
      * @param string $disk
      * @return $this
@@ -22,7 +22,7 @@ interface Converter
     public function disk(string $disk);
 
     /**
-     * Set path to where to save the converted file
+     * Set path to where to save the converted file.
      *
      * @param string $path
      * @return $this
@@ -30,7 +30,7 @@ interface Converter
     public function saveTo(string $path);
 
     /**
-     * Sets the source where the text from
+     * Sets the source where the text from.
      *
      * @param string $source
      * @return $this

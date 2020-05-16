@@ -10,20 +10,20 @@ return [
 
     /**
      * The default audio format from the converted text to speech
-     * You can choose mp3 as of the moment
+     * You can choose mp3 as of the moment.
      */
     'output_format' => env('TTS_OUTPUT_FORMAT', 'mp3'),
 
     /**
      * The driver to be used for converting Text to Speech
-     * You can choose polly, or null as of the moment
+     * You can choose polly, or null as of the moment.
      */
     'driver' => env('TTS_DRIVER', 'null'),
 
     'services' => [
         'polly' => [
             /**
-             * IAM Credentials from AWS 
+             * IAM Credentials from AWS.
              */
             'credentials' => [
                 'key'    => env('TTS_AWS_ACCESS_KEY_ID', ''),
@@ -39,10 +39,10 @@ return [
              * Giorgio|Gwyneth|Hans|Ines|Ivy|Jacek|Jan|Joanna|Joey|Justin|Karl|
              * Kendra|Kimberly|Lea|Liv|Lotte|Lucia|Lupe|Mads|Maja|Marlene|Mathieu|
              * Matthew|Maxim|Mia|Miguel|Mizuki|Naja|Nicole|Penelope|Raveena|Ricardo|
-             * Ruben|Russell|Salli|Seoyeon|Takumi|Tatyana|Vicki|Vitoria|Zeina|Zhiyu
+             * Ruben|Russell|Salli|Seoyeon|Takumi|Tatyana|Vicki|Vitoria|Zeina|Zhiyu.
              */
             'default_voice_id' => 'Amy',
-        ]
-    ]
+        ],
+    ],
 
 ];

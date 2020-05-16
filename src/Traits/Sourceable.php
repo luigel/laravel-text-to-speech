@@ -5,14 +5,14 @@ namespace Luigel\TextToSpeech\Traits;
 trait Sourceable
 {
     /**
-     * Determines where the text to convert from
+     * Determines where the text to convert from.
      *
      * @var string
      */
     protected $source = 'text';
 
     /**
-     * Sets the source
+     * Sets the source.
      *
      * @param string $source
      * @return $this
@@ -25,14 +25,13 @@ trait Sourceable
     }
 
     /**
-     * Get text from source
+     * Get text from source.
      * @param mixed $data
      * @return string
      */
     protected function getTextFromSource($data)
     {
-        switch ($this->source)
-        {
+        switch ($this->source) {
             case 'text':
                 return $data;
             case 'path':
@@ -44,7 +43,7 @@ trait Sourceable
     }
 
     /**
-     * Get text from the path
+     * Get text from the path.
      *
      * @param string $path
      * @return string
@@ -55,7 +54,7 @@ trait Sourceable
     }
 
     /**
-     * Get text from the website
+     * Get text from the website.
      *
      * @param string $url
      * @return string
