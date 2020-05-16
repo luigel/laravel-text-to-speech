@@ -23,12 +23,14 @@ use Luigel\TextToSpeech\Facades\TextToSpeech;
 TextToSpeech::disk('local')
     ->saveTo($path)
     ->convert($text);
-
+```
+``` php
 // You can also use source() in order to choose the source of the text to be converted
 TextToSpeech::saveTo($path)
     ->source('path')
     ->convert($path);
-
+```
+``` php
 // This will save the output in the `storage/TTS` directory
 TextToSpeech::convert($text);
 ```
