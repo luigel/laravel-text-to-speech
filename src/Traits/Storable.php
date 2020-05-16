@@ -26,7 +26,7 @@ trait Storable
      * @param string $disk
      * @return $this
      */
-    public function disk(string $disk = 'storage')
+    public function disk(string $disk)
     {
         $this->disk = $disk;
 
