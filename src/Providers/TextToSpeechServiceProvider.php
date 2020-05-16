@@ -32,7 +32,7 @@ class TextToSpeechServiceProvider extends ServiceProvider
     }
 
     /**
-     * Registers the Text to speech manager
+     * Registers the Text to speech manager.
      *
      * @return void
      */
@@ -62,5 +62,4 @@ class TextToSpeechServiceProvider extends ServiceProvider
             'tts',
         ];
     }
-    
 }
