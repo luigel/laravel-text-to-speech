@@ -2,6 +2,8 @@
 
 namespace Luigel\TextToSpeech;
 
+use Aws\Polly\PollyClient;
+use Exception;
 use Illuminate\Support\Manager;
 use Luigel\TextToSpeech\Converters\NullConverter;
 use Luigel\TextToSpeech\Converters\PollyConverter;
@@ -52,11 +54,11 @@ class TextToSpeechManager extends Manager
      */
     protected function ensureAwsSdkIsInstalled()
     {
-        if (class_exists(\Aws\Polly\PollyClient::class)) {
-            return;
+        if (!class_exists(PollyClient::class)) {
+            throw new Exception(
+                'Please install the AWS SDK PHP using `composer require aws/aws-sdk-php`.'
+            );
         }
-
-        throw new \Exception('Please install the AWS SDK PHP using `composer require aws/aws-sdk-php`.');
     }
 
     /**
@@ -66,10 +68,12 @@ class TextToSpeechManager extends Manager
      */
     public function getDefaultDriver()
     {
-        if (is_null($this->container['config']['tts.driver'])) {
-            return 'polly';
+        $driver = $this->container['config']['tts.driver'];
+
+        if (is_null($driver)) {
+            return 'null';
         }
 
-        return $this->container['config']['tts.driver'];
+        return $driver;
     }
 }

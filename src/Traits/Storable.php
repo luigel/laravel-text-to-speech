@@ -48,6 +48,7 @@ trait Storable
 
     /**
      * Execute the store.
+     *
      * @param mixed $resultContent
      * @return void
      */

@@ -2,6 +2,9 @@
 
 namespace Luigel\TextToSpeech\Converters;
 
+use Aws\Credentials\Credentials;
+use Aws\Polly\PollyClient;
+use Illuminate\Support\Arr;
 use Luigel\TextToSpeech\Contracts\Converter;
 use Luigel\TextToSpeech\Traits\Sourceable;
 use Luigel\TextToSpeech\Traits\Storable;
@@ -17,11 +20,20 @@ class PollyConverter implements Converter
      */
     protected $client;
 
+    /**
+     * Construct converter.
+     *
+     * @param array $config
+     */
     public function __construct($config)
     {
         $credentials = $this->getCredentials($config['credentials']);
 
-        $this->client = new \Aws\Polly\PollyClient(['version' => $config['version'], 'credentials' => $credentials, 'region' => $config['region']]);
+        $this->client = new PollyClient([
+            'version'     => $config['version'],
+            'region'      => $config['region'],
+            'credentials' => $credentials,
+        ]);
     }
 
     /**
@@ -32,7 +44,7 @@ class PollyConverter implements Converter
      */
     protected function getCredentials(array $credentials)
     {
-        return new \Aws\Credentials\Credentials($credentials['key'], $credentials['secret']);
+        return new Credentials($credentials['key'], $credentials['secret']);
     }
 
     /**
@@ -40,7 +52,7 @@ class PollyConverter implements Converter
      *
      * @return \Aws\Polly\PollyClient
      */
-    public function getClient(): \Aws\Polly\PollyClient
+    public function getClient(): PollyClient
     {
         return $this->client;
     }
@@ -54,18 +66,40 @@ class PollyConverter implements Converter
      */
     public function convert($data, array $options = null)
     {
-        if (! isset($options['VoiceId'])) {
-            $options['VoiceId'] = config('tts.services.polly.voice_id', 'Amy');
-        }
+        $result = $this->client->synthesizeSpeech([
+            'VoiceId'      => $this->voice($options),
+            'OutputFormat' => $this->format($options),
+            'Text'         => $this->getTextFromSource($data),
+        ]);
 
-        if (! isset($options['OutputFormat'])) {
-            $options['OutputFormat'] = config('tts.output_format');
-        }
-
-        $parameters = array_merge($options, ['Text' => $this->getTextFromSource($data)]);
-        $result = $this->client->synthesizeSpeech($parameters);
-
+        // Store audio file to disk
         $this->store($this->getResultContent($result));
+    }
+
+    /**
+     * Get the text to speech voice ID.
+     *
+     * @param  array $options
+     * @return string
+     */
+    protected function voice($options)
+    {
+        $default = config('tts.services.polly.voice_id', 'Amy');
+
+        return Arr::get($options, 'voice', $default);
+    }
+
+    /**
+     * Get the audio format.
+     *
+     * @param  array $options
+     * @return string
+     */
+    protected function format($options)
+    {
+        $default = config('tts.output_format', 'mp3');
+
+        return Arr::get($options, 'format', $default);
     }
 
     /**
