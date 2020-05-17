@@ -3,6 +3,7 @@
 namespace Luigel\TextToSpeech\Traits;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 trait Storable
 {
@@ -50,7 +51,7 @@ trait Storable
      * Execute the store.
      *
      * @param mixed $resultContent
-     * @return void
+     * @return string
      */
     protected function store($resultContent)
     {
@@ -59,6 +60,8 @@ trait Storable
         $storage = Storage::disk($this->disk ?: config('tts.disk'));
 
         $storage->put($this->path, $resultContent);
+
+        return $this->path;
     }
 
     /**
@@ -68,6 +71,33 @@ trait Storable
      */
     protected function ensurePathIsNotNull()
     {
-        $this->path = $this->path ?: '/TTS/'.now()->timestamp.config('tts.output_format');
+        $filename = $this->path ?: 'TTS/'.now()->timestamp;
+
+        if (!$this->hasExtension($filename)) {
+            $filename .= '.'.$this->getExtension();
+        }
+
+        $this->path = $filename;
+    }
+
+    /**
+     * Determine if filename includes file extension.
+     *
+     * @param  string  $filename
+     * @return boolean
+     */
+    protected function hasExtension($filename)
+    {
+        return (bool) pathinfo($filename, PATHINFO_EXTENSION);
+    }
+
+    /**
+     * Get audio file extension.
+     *
+     * @return string
+     */
+    protected function getExtension()
+    {
+        return config('tts.output_format');
     }
 }
