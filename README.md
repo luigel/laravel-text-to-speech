@@ -59,6 +59,7 @@ If you discover any security related issues, please email rigel20.kent@gmail.com
 ## Credits
 
 - [Rigel Kent Carbonel](https://github.com/luigel)
+- [Harlequin Doyon](https://github.com/harlekoy)
 - [All Contributors](../../contributors)
 
 ## License

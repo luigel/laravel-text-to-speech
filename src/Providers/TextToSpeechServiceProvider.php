@@ -3,6 +3,7 @@
 namespace Luigel\TextToSpeech\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Luigel\TextToSpeech\Facades\TextToSpeech;
 use Luigel\TextToSpeech\TextToSpeechManager;
 
 class TextToSpeechServiceProvider extends ServiceProvider
@@ -43,12 +44,14 @@ class TextToSpeechServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * Register aliases.
+     *
+     * @return void
+     */
     protected function registerAliases()
     {
-        $this->app->alias(
-            \Luigel\TextToSpeech\Facades\TextToSpeech::class,
-            'TTS'
-        );
+        $this->app->alias(TextToSpeech::class, 'TTS');
     }
 
     /**
