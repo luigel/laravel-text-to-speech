@@ -54,7 +54,7 @@ class TextToSpeechManager extends Manager
      */
     protected function ensureAwsSdkIsInstalled()
     {
-        if (!class_exists(PollyClient::class)) {
+        if (! class_exists(PollyClient::class)) {
             throw new Exception(
                 'Please install the AWS SDK PHP using `composer require aws/aws-sdk-php`.'
             );
