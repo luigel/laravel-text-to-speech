@@ -5,7 +5,7 @@
         "luigel",
         "text-to-speech"
     ],
-    "homepage": "https://github.com/luigel/laravel-amazon-polly",
+    "homepage": "https://github.com/luigel/laravel-text-to-speech",
     "license": "MIT",
     "type": "library",
     "authors": [
